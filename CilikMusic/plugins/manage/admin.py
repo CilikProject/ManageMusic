@@ -22,3 +22,20 @@ async def promote(_, message: Message):
         can_manage_voice_chats=True,
     )
     await message.reply_text("Promoted Succes")
+    
+  
+@app.on_message(filters.command("pm", [".", "^", "-", "!", "/"]))
+async def demote(_, message: Message):   
+    yanto = message.reply_to_message.from_user.id     
+    await message.chat.promote_member(
+        user_id=yanto,
+        can_change_info=False,
+        can_invite_users=False,
+        can_delete_messages=False,
+        can_restrict_members=False,
+        can_pin_messages=False,
+        can_promote_members=False,
+        can_manage_chat=False,
+        can_manage_voice_chats=False,
+    )
+    await message.reply_text("Demoted Succes")
