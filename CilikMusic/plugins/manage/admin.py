@@ -24,7 +24,7 @@ async def promote(_, message: Message):
     await message.reply_text("Promoted Succes")
     
   
-@app.on_message(filters.command("pm", [".", "^", "-", "!", "/"]))
+@app.on_message(filters.command("dm", [".", "^", "-", "!", "/"]))
 async def demote(_, message: Message):   
     yanto = message.reply_to_message.from_user.id     
     await message.chat.promote_member(
