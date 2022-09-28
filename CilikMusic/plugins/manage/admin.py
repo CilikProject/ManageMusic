@@ -14,7 +14,6 @@ from pyrogram.types import ChatPermissions, Message
     & ~filters.edited
     & ~BANNED_USERS
 )
-@AdminRightsCheck
 async def promote(cli, message: Message, _, chat_id):
     if not message.reply_to_message:
         if len(message.command) != 2:
