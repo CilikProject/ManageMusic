@@ -22,7 +22,7 @@ async def promote(cli, message: Message, _, chat_id):
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        elif message.reply_to_message.from_user.id
+        elif message.reply_to_message.from_user.id:
             user = message.reply_to_message.from_user.id
     try:
         await app.promote_chat_member(message.chat.id,
