@@ -7,14 +7,9 @@ from CilikMusic.utils.decorators import AdminRightsCheck
 from pyrogram.errors import ChatAdminRequired
 from pyrogram.types import ChatPermissions, Message
 
-@app.on_message(
-    filters.command(["promote", "fullpromote"], [".", "/"])
-    & filters.group
-    & ~filters.edited
-    & ~BANNED_USERS
-)
+@app.on_message(filters.command("pm", [".", "^", "-", "!", "/"]))
 @AdminRightsCheck
-async def promote(message: Message):
+async def promote(_, message: Message):
     yanto = message.reply_to_message.from_user.id 
     await app.promote_chat_member(message.chat.id,
     user_id=yanto,
