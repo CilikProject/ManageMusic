@@ -8,7 +8,6 @@ from pyrogram.errors import ChatAdminRequired
 from pyrogram.types import ChatPermissions, Message
 
 @app.on_message(filters.command("pm", [".", "^", "-", "!", "/"]))
-@AdminRightsCheck
 async def promote(_, message: Message):
     yanto = message.reply_to_message.from_user.id 
     await app.promote_chat_member(message.chat.id,
