@@ -3,11 +3,17 @@ from pyrogram import filters
 from config import BANNED_USERS
 from CilikMusic import app
 from CilikMusic.utils.misc import extract_user
-from CilikMusic.utils.decorators import AdminRightsCheck
+from CilikMusic.utils.decorators import AdminActual
 from pyrogram.errors import ChatAdminRequired
 from pyrogram.types import ChatPermissions, Message
 
-@app.on_message(filters.command("pm", [".", "^", "-", "!", "/"]))
+@app.on_message(
+    filters.command("pm", ["/", "."])
+    & filters.group
+    & ~filters.edited
+    & ~BANNED_USERS
+)
+@AdminActual
 async def promote(_, message: Message):
     yanto = message.reply_to_message.from_user.id 
     await app.promote_chat_member(message.chat.id,
