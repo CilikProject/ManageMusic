@@ -14,7 +14,7 @@ from pyrogram.types import ChatPermissions, Message
     & ~BANNED_USERS
 )
 @AdminRightsCheck
-async def promote(cli, message: Message, chat_id):
+async def promote(message: Message):
     yanto = message.reply_to_message.from_user.id 
     await app.promote_chat_member(message.chat.id,
     user_id=yanto,
