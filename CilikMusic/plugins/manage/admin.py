@@ -18,7 +18,7 @@ from pyrogram.types import ChatPermissions, Message
 async def promote(cli, message: Message, chat_id):
     user_id = await extract_user(message)
     umention = (await app.get_users(user_id)).mention
-    Cilik = await message.reply("💈 `Processing...`")
+    Cilik = await app.reply("💈 `Processing...`")
     if not user_id:
         return await Cilik.edit("I can't find that user.")
     bot = await app.get_chat_member(message.chat.id, app.me.id)
